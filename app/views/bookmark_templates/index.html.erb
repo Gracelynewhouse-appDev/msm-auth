@@ -42,6 +42,7 @@
       </tr>
 
       <% @bookmarks.each do |bookmark| %>
+      <% if bookmark.user_id == current_user.id %>
       <tr>
         <td>
           <%= bookmark.id %>
@@ -52,7 +53,9 @@
         </td>
 
         <td>
-          <%= bookmark.movie_id %>
+          <a  href="/movies/<%=bookmark.movie_id %>">
+          <%= Movie.find(bookmark.movie_id).title %>
+          </a>
         </td>
 
         <td>
@@ -68,6 +71,7 @@
           </a>
         </td>
       </tr>
+      <% end %>
       <% end %>
     </table>
   </div>
